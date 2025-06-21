@@ -1,6 +1,10 @@
 {
   "extends": "@repo/typescript-config/nextjs.json",
   "compilerOptions": {
+
+    "declaration": false, // Workaround for https://github.com/payloadcms/payload/issues/9914
+    "declarationMap": false,
+
     "baseUrl": ".",
     "plugins": [
       {
