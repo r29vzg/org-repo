@@ -1,6 +1,7 @@
 import type { CollectionBeforeChangeHook, CollectionConfig } from 'payload'
 
 import {
+  BlockquoteFeature,
   BlocksFeature,
   FixedToolbarFeature,
   HeadingFeature,
@@ -100,6 +101,7 @@ export const Articles: CollectionConfig = {
                     UnorderedListFeature(),
                     OrderedListFeature(),
                     IndentFeature(),
+                    BlockquoteFeature(),
                   ]
                 },
               }),
