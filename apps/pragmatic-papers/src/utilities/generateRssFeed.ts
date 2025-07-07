@@ -5,6 +5,13 @@ import { convertLexicalToHTML } from '@payloadcms/richtext-lexical/html'
 
 const SITE_URL = getServerSideURL()
 
+const getMediaUrl = (url: string) => {
+  if (url.startsWith('http://') || url.startsWith('https://')) {
+    return url
+  }
+  return `${SITE_URL}${url}`
+}
+
 const formatArticleLink = (article: Article) => {
   if (!article.meta?.description) {
     return `<li style="margin: 1em 0"><a href="${SITE_URL}/articles/${article.slug}">${article.title}</a></li>`
@@ -27,7 +34,6 @@ const formatVolumeDescription = (volume: Volume) => {
   if (volume.editorsNote) {
     sections.push(`
 <div style="margin: 1.5em 0">
-  <h3>Editor's Note</h3>
   ${convertLexicalToHTML({ data: volume.editorsNote })}
 </div>`)
   }
@@ -60,7 +66,7 @@ const createBaseFeedConfig = (type: 'Articles' | 'Volumes') => ({
   link: SITE_URL,
   language: 'en',
   favicon: `${SITE_URL}/favicon.ico`,
-  image: `${SITE_URL}/pragmatic-papers-logo-dark-og.png`,
+  image: `${SITE_URL}/pragmaticpapers-logo-dark-og.png`,
   copyright: `All rights reserved ${new Date().getFullYear()}`,
   generator: 'Pragmatic Papers',
   updated: new Date(),
@@ -83,7 +89,7 @@ export const generateArticleFeed = (articles: Article[]): string => {
         date: new Date(article.publishedAt),
         image:
           article.meta?.image && typeof article.meta.image !== 'string'
-            ? `${SITE_URL}${(article.meta.image as Media).url}`
+            ? getMediaUrl((article.meta.image as Media).url ?? '')
             : undefined,
         author: article.populatedAuthors?.map((author) => ({
           name: author.name || '',
