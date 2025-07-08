@@ -74,7 +74,7 @@ export const Media: CollectionConfig = {
       return `${(doc as MediaType).sizes?.thumbnail?.url ?? ''}`
     },
     formatOptions: {
-      format: 'avif',
+      format: 'webp',
     },
     focalPoint: true,
     disableLocalStorage: process.env.NODE_ENV === 'production',
@@ -83,7 +83,7 @@ export const Media: CollectionConfig = {
         name: 'thumbnail',
         width: 300,
         formatOptions: {
-          format: 'avif',
+          format: 'webp',
         },
       },
       {
@@ -91,35 +91,35 @@ export const Media: CollectionConfig = {
         width: 500,
         height: 500,
         formatOptions: {
-          format: 'avif',
+          format: 'webp',
         },
       },
       {
         name: 'small',
         width: 600,
         formatOptions: {
-          format: 'avif',
+          format: 'webp',
         },
       },
       {
         name: 'medium',
         width: 900,
         formatOptions: {
-          format: 'avif',
+          format: 'webp',
         },
       },
       {
         name: 'large',
         width: 1400,
         formatOptions: {
-          format: 'avif',
+          format: 'webp',
         },
       },
       {
         name: 'xlarge',
         width: 1920,
         formatOptions: {
-          format: 'avif',
+          format: 'webp',
         },
       },
       {
@@ -127,13 +127,6 @@ export const Media: CollectionConfig = {
         width: 1200,
         height: 630,
         crop: 'center',
-        formatOptions: {
-          format: 'jpeg',
-        },
-      },
-      {
-        name: 'medium-compat',
-        width: 900,
         formatOptions: {
           format: 'jpeg',
         },
