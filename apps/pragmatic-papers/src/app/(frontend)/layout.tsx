@@ -1,9 +1,7 @@
 import type { Metadata } from 'next'
 
-import { cn } from '@/utilities/ui'
-import { GeistMono } from 'geist/font/mono'
-import { GeistSans } from 'geist/font/sans'
-import { Source_Serif_4 } from 'next/font/google'
+import { Libre_Franklin } from 'next/font/google'
+import { JetBrains_Mono } from 'next/font/google'
 import React from 'react'
 
 import { AdminBar } from '@/components/AdminBar'
@@ -18,14 +16,12 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 
-import { Open_Sans } from 'next/font/google'
-
-const sourceSerif4 = Source_Serif_4({
-  variable: '--font-serif',
+const libreFranklin = Libre_Franklin({
   subsets: ['latin'],
 })
 
-const openSans = Open_Sans({
+// eslint-disable-next-line
+const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
 })
 
@@ -34,16 +30,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const { isEnabled } = await draftMode()
 
   return (
-    <html
-      className={cn(
-        GeistSans.variable,
-        GeistMono.variable,
-        sourceSerif4.className,
-        openSans.className,
-      )}
-      lang="en"
-      suppressHydrationWarning
-    >
+    <html className={libreFranklin.className} lang="en" suppressHydrationWarning>
       <head>
         <InitTheme />
         <link href="/manifest.json" rel="manifest" />

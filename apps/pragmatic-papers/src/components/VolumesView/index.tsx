@@ -23,7 +23,6 @@ export const VolumesView: React.FC<Props> = (props) => {
                 </div>
               )
             }
-
             return null
           })}
         </div>

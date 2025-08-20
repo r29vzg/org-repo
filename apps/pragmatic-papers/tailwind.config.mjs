@@ -101,8 +101,8 @@ const config = {
         warning: 'hsl(var(--warning))',
       },
       fontFamily: {
-        mono: ['var(--font-geist-mono)'],
-        sans: ['var(--font-geist-sans)'],
+        mono: ['JetBrains Mono', 'monospace'],
+        sans: ['Libre Franklin', 'sans-serif'],
       },
       keyframes: {
         'accordion-down': {
@@ -120,7 +120,7 @@ const config = {
             {
               '--tw-prose-body': 'var(--text)',
               '--tw-prose-headings': 'var(--text)',
-              fontFamily: 'var(--font-serif)',
+              fontFamily: 'Libre Franklin, sans-serif',
               h1: {
                 fontSize: '4rem',
                 fontWeight: 700,
@@ -128,7 +128,7 @@ const config = {
                 color: 'transparent',
                 '-webkit-text-stroke-width': '2px',
                 '-webkit-text-stroke-color': 'var(--brand-light)',
-                fontFamily: 'Open Sans,Open Sans Fallback',
+                fontFamily: 'Libre Franklin, sans-serif',
               },
               h2: {
                 fontSize: '2.25rem',

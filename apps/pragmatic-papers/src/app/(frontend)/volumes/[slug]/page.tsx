@@ -93,6 +93,7 @@ export default async function VolumePage({
       <PayloadRedirects disableNotFound url={url} />
 
       {draft && <LivePreviewListener />}
+
       <div className="relative flex items-end">
         <div className="container pb-8 text-center">
           <div>
