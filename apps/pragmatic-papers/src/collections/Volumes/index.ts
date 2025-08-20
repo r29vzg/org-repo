@@ -75,7 +75,7 @@ export const Volumes: CollectionConfig = {
         {
           name: 'showTitle',
           type: 'checkbox',
-          label: 'Show title on Volume page',
+          label: 'Display title on Volume page',
           defaultValue: false,
           required: false,
         },

@@ -83,7 +83,7 @@ export const Articles: CollectionConfig = {
         {
           name: 'showTitle',
           type: 'checkbox',
-          label: 'Show title on Article page',
+          label: 'Display title on Article page',
           defaultValue: true,
           required: false,
         },
