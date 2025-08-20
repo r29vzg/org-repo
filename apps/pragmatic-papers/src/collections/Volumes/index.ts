@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
 import {
+  AlignFeature,
   BlockquoteFeature,
   BlocksFeature,
   FixedToolbarFeature,
@@ -64,9 +65,21 @@ export const Volumes: CollectionConfig = {
   },
   fields: [
     {
-      name: 'title',
-      type: 'text',
-      required: true,
+      type: 'group',
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'showTitle',
+          type: 'checkbox',
+          label: 'Show title on Volumes page',
+          defaultValue: false,
+          required: false,
+        },
+      ],
     },
     {
       type: 'tabs',
@@ -93,6 +106,7 @@ export const Volumes: CollectionConfig = {
                 features: ({ rootFeatures }) => {
                   return [
                     ...rootFeatures,
+                    AlignFeature(),
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
                     BlocksFeature({ blocks: [Banner, Code, MediaBlock, SquiggleRule] }),
                     FixedToolbarFeature(),
@@ -114,6 +128,7 @@ export const Volumes: CollectionConfig = {
                 features: ({ rootFeatures }) => {
                   return [
                     ...rootFeatures,
+                    AlignFeature(),
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
                     BlocksFeature({ blocks: [Banner, Code, MediaBlock, SquiggleRule] }),
                     FixedToolbarFeature(),
