@@ -2,6 +2,7 @@
 import tailwindcssAnimate from 'tailwindcss-animate'
 import typography from '@tailwindcss/typography'
 import tailwindcssTextStroke from '@designbycode/tailwindcss-text-stroke'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -52,17 +53,9 @@ const config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
-      },
       colors: {
-        /* TODO: Move these definitions to shared styles */
         brand: '#0080ff',
         brandLight: '#56b0ff',
-        /* END */
-
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
@@ -101,8 +94,9 @@ const config = {
         warning: 'hsl(var(--warning))',
       },
       fontFamily: {
-        mono: ['JetBrains Mono', 'monospace'],
-        sans: ['Libre Franklin', 'sans-serif'],
+        mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
+        sans: ['Libre Franklin', ...defaultTheme.fontFamily.sans],
+        serif: [['"Source Serif 4"', ...defaultTheme.fontFamily.serif], { fontVariationSettings: '"opsz" 20' }],
       },
       keyframes: {
         'accordion-down': {
@@ -167,15 +161,6 @@ const config = {
               },
               'a:hover': {
                 boxShadow: 'inset 0 -11px 0 0 var(--brand-light)',
-              },
-            },
-          ],
-        },
-        md: {
-          css: [
-            {
-              h1: {
-                fontSize: '6rem',
               },
             },
           ],

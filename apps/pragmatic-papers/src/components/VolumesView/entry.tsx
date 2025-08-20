@@ -59,13 +59,13 @@ export const Entry: React.FC<{
             </h2>
           )}
           {description && (
-            <div className="my-3 text-sm md:text-base text-muted-foreground font-sans">
+            <div className="my-3 text-sm text-muted-foreground font-sans">
               {description && <p>{sanitizedDescription}</p>}
             </div>
           )}
         </div>
       </div>
-      <SquiggleStatic />
+      <SquiggleStatic size="full" />
     </div>
   )
 }

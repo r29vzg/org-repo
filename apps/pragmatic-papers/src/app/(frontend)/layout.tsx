@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 
 import { Libre_Franklin } from 'next/font/google'
 import { JetBrains_Mono } from 'next/font/google'
+import { Source_Serif_4 } from 'next/font/google'
 import React from 'react'
 
 import { AdminBar } from '@/components/AdminBar'
@@ -17,11 +18,19 @@ import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 
 const libreFranklin = Libre_Franklin({
+  weight: ['300', '400', '500', '600'],
   subsets: ['latin'],
 })
 
 // eslint-disable-next-line
 const jetbrainsMono = JetBrains_Mono({
+  weight: ['300', '400', '500', '600'],
+  subsets: ['latin'],
+})
+
+// eslint-disable-next-line
+const sourceSerif4 = Source_Serif_4({
+  weight: ['300', '400', '500', '600'],
   subsets: ['latin'],
 })
 

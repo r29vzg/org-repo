@@ -4,7 +4,7 @@ import { PayloadRedirects } from '@/components/PayloadRedirects'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
-import React, { cache } from 'react'
+import React, { cache, Fragment } from 'react'
 
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
@@ -79,7 +79,8 @@ export default async function VolumePage({
   const volume = await queryVolumeBySlug({ slug })
 
   if (!volume) return <PayloadRedirects url={url} />
-  const { publishedAt, editorsNote, articles } = volume
+
+  const { title, publishedAt, editorsNote, articles, introduction } = volume
   if (articles?.filter((article) => typeof article === 'number')?.length ?? 0 > 0) {
     console.error('Fetching volume with unfetched articles', slug)
   }
@@ -94,36 +95,59 @@ export default async function VolumePage({
 
       {draft && <LivePreviewListener />}
 
-      <div className="relative flex items-end">
-        <div className="container pb-8 text-center">
-          <div>
-            <div>
-              <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl">{`Volume ${toRoman(Number(volume.slug))}`}</h1>
+      <div className="container">
+        <div className="text-center">
+          <div className="flex flex-col justify-center items-center text-xs leading-tight">
+            <div className="flex">
+              <h1 className="font-mono">{`Volume ${toRoman(Number(volume.volumeNumber))}`}</h1>
             </div>
-
-            <div className="flex flex-col md:flex-row gap-4 md:gap-16 justify-center">
-              {publishedAt && (
-                <div className="flex flex-col gap-1">
-                  <p className="text-sm">Date Published</p>
-                  <time dateTime={publishedAt}>{formatDateTime(publishedAt)}</time>
-                </div>
-              )}
-            </div>
+            {publishedAt && (
+              <div className="font-mono">
+                <time dateTime={publishedAt}>{formatDateTime(publishedAt)}</time>
+              </div>
+            )}
           </div>
         </div>
-      </div>
-      {editorsNote && (
-        <div className="w-full container">
-          <RichText className="w-full" enableGutter={false} data={editorsNote} />
+
+        {title && (
+          <div className="w-full my-8">
+            <h1 className="font-sans text-4xl text-center font-bold tracking-normal">{title}</h1>
+          </div>
+        )}
+
+        {introduction && (
+          <div className="w-full">
+            <RichText
+              className="font-serif font-light text-md tracking-tight leading-relaxed"
+              enableGutter={false}
+              data={introduction}
+            />
+          </div>
+        )}
+
+        <div className="flex flex-col items-center gap-4 pt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {actualArticles?.map((article) => (
+              <ArticleCard key={article.id} doc={article} relationTo="articles" />
+            ))}
+          </div>
         </div>
-      )}
-      <Squiggle className="h-6 mx-auto" />
-      <div className="flex flex-col items-center gap-4 pt-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          {actualArticles?.map((article) => (
-            <ArticleCard key={article.id} doc={article} relationTo="articles" />
-          ))}
-        </div>
+
+        {editorsNote && (
+          <Fragment>
+            <Squiggle className="mx-auto" />
+            <div className="w-full">
+              <h2 className="font-sans leading-tight text-4xl font-bold m-8 text-center">
+                Editor's Note
+              </h2>
+              <RichText
+                className="font-serif text-md tracking-tight font-normal leading-relaxed"
+                enableGutter={false}
+                data={editorsNote}
+              />
+            </div>
+          </Fragment>
+        )}
       </div>
     </div>
   )

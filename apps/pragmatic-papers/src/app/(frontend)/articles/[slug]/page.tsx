@@ -87,7 +87,11 @@ export default async function Article({ params: paramsPromise }: Args): Promise<
 
       <ArticleHero article={article} />
 
-      <RichText className="" data={article.content} enableGutter={false} />
+      <RichText
+        className="font-serif text-md tracking-tight font-normal leading-relaxed"
+        data={article.content}
+        enableGutter={false}
+      />
     </article>
   )
 }
