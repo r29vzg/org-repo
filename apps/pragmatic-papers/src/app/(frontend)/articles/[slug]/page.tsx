@@ -78,7 +78,7 @@ export default async function Article({ params: paramsPromise }: Args): Promise<
 
   if (!article) return <PayloadRedirects url={url} />
 
-  const { populatedAuthors, publishedAt, title } = article
+  const { populatedAuthors, publishedAt, title, showTitle } = article
 
   const hasAuthors =
     populatedAuthors && populatedAuthors.length > 0 && formatAuthors(populatedAuthors) !== ''
@@ -94,9 +94,11 @@ export default async function Article({ params: paramsPromise }: Args): Promise<
 
       <div className="flex-col">
         <div className="pb-4 flex-col dark:text-white">
-          <h1 className="mb-6 leading-tight text-4xl text-center font-bold tracking-normal">
-            {title}
-          </h1>
+          {showTitle && (
+            <h1 className="mb-6 leading-tight text-4xl text-center font-bold tracking-normal">
+              {title}
+            </h1>
+          )}
           {hasAuthors && (
             <div className="font-mono text-xs text-center">
               <p>by {formatAuthors(populatedAuthors)}</p>

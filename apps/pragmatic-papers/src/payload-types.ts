@@ -279,6 +279,7 @@ export interface Volume {
 export interface Article {
   id: number;
   title: string;
+  showTitle?: boolean | null;
   content: {
     root: {
       type: string;
@@ -1215,6 +1216,7 @@ export interface FormBlockSelect<T extends boolean = true> {
  */
 export interface ArticlesSelect<T extends boolean = true> {
   title?: T;
+  showTitle?: T;
   content?: T;
   meta?:
     | T
