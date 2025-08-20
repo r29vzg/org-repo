@@ -116,7 +116,7 @@ export default async function VolumePage({
           <RichText className="w-full" enableGutter={false} data={editorsNote} />
         </div>
       )}
-      <Squiggle className="w-1/2 h-6 mx-auto" />
+      <Squiggle className="h-6 mx-auto" />
       <div className="flex flex-col items-center gap-4 pt-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {actualArticles?.map((article) => (
