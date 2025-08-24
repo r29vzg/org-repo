@@ -26,12 +26,12 @@ import { MediaBlock } from '@/blocks/MediaBlock/config'
 import { DisplayMathBlock, InlineMathBlock } from '@/blocks/Math/config'
 import { SquiggleRule } from '@/blocks/SquiggleRule/config'
 
-export const ArticleContent: Block = {
+export const ArticleBodyContent: Block = {
   slug: 'articleBodyContent',
   interfaceName: 'articleBodyContent',
   fields: [
     {
-      name: 'articleBodyContent',
+      name: 'content',
       type: 'richText',
       editor: lexicalEditor({
         features: ({ rootFeatures }) => {

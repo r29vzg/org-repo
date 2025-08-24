@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 
 import type { Article } from '@/payload-types'
 
-import { ArticleBodyContentBlock } from './ArticleContent/Component'
+import { ArticleBodyContentBlock } from './ArticleBodyContent/Component'
 import { ArticleIntroductionBlock } from './ArticleIntroduction/Component'
 import { EditorsNoteBlock } from './EditorsNote/Component'
 import { SquiggleRuleBlock } from './SquiggleRule/Component'
@@ -17,7 +17,7 @@ const blockComponents = {
 export const RenderArticleBlocks: React.FC<{
   blocks: Article['layout']
 }> = (props) => {
-  const blocks = props.blocks.content
+  const blocks = props.blocks?.content
 
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0
 

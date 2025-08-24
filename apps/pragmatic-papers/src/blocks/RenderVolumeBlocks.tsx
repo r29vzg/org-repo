@@ -18,7 +18,7 @@ export const RenderVolumeBlocks: React.FC<{
   blocks: Volume['layout']
   volume?: Volume
 }> = (props) => {
-  const blocks = props.blocks.content
+  const blocks = props.blocks?.content
   const { volume } = props
 
   const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0

@@ -9,11 +9,7 @@ type Props = {
   index?: number
 } & ArticleBodyContentBlockProps
 
-export const ArticleBodyContentBlock: React.FC<Props> = ({
-  className,
-  articleBodyContent: content,
-  index,
-}) => {
+export const ArticleBodyContentBlock: React.FC<Props> = ({ className, content, index }) => {
   if (!content) return null
   return (
     <RichText

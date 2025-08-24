@@ -31,7 +31,7 @@ export const VolumeIntroduction: Block = {
   interfaceName: 'volumeIntroduction',
   fields: [
     {
-      name: 'volumeIntroductionContent',
+      name: 'content',
       type: 'richText',
       editor: lexicalEditor({
         features: ({ rootFeatures }) => {

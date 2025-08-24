@@ -31,7 +31,7 @@ export const EditorsNote: Block = {
   interfaceName: 'editorsNote',
   fields: [
     {
-      name: 'editorsNoteContent',
+      name: 'content',
       type: 'richText',
       editor: lexicalEditor({
         features: ({ rootFeatures }) => {
@@ -57,8 +57,8 @@ export const EditorsNote: Block = {
             ChecklistFeature(),
           ]
         },
-        required: false,
       }),
+      required: false,
     },
   ],
   admin: {

@@ -9,11 +9,7 @@ type Props = {
   index?: number
 } & VolumeIntroductionBlockProps
 
-export const VolumeIntroductionComponent: React.FC<Props> = ({
-  className,
-  volumeIntroductionContent: content,
-  index,
-}) => {
+export const VolumeIntroductionComponent: React.FC<Props> = ({ className, content, index }) => {
   if (!content) return null
   return (
     <RichText

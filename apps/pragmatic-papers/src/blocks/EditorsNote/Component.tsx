@@ -8,11 +8,7 @@ type Props = {
   index?: number
 } & EditorsNoteBlockProps
 
-export const EditorsNoteBlock: React.FC<Props> = ({
-  className,
-  editorsNoteContent: content,
-  index,
-}) => {
+export const EditorsNoteBlock: React.FC<Props> = ({ className, content, index }) => {
   if (!content) return null
   return (
     <div className={className} key={index}>

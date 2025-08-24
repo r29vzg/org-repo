@@ -31,7 +31,7 @@ export const ArticleIntroduction: Block = {
   interfaceName: 'articleIntroduction',
   fields: [
     {
-      name: 'articleIntroductionContent',
+      name: 'content',
       type: 'richText',
       editor: lexicalEditor({
         features: ({ rootFeatures }) => {

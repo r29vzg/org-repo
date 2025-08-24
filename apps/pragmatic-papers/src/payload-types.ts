@@ -305,8 +305,8 @@ export interface Article {
     image?: (number | null) | Media;
     description?: string | null;
   };
-  layout: {
-    content: (ArticleIntroduction | ArticleBodyContent | EditorsNote | SquiggleRuleBlock)[];
+  layout?: {
+    content?: (ArticleIntroduction | ArticleBodyContent | EditorsNote | SquiggleRuleBlock)[] | null;
   };
   publishedAt?: string | null;
   authors?: (number | User)[] | null;
@@ -462,7 +462,7 @@ export interface User {
  * via the `definition` "articleIntroduction".
  */
 export interface ArticleIntroduction {
-  articleIntroductionContent?: {
+  content?: {
     root: {
       type: string;
       children: {
@@ -486,7 +486,7 @@ export interface ArticleIntroduction {
  * via the `definition` "articleBodyContent".
  */
 export interface ArticleBodyContent {
-  articleBodyContent: {
+  content: {
     root: {
       type: string;
       children: {
@@ -510,7 +510,7 @@ export interface ArticleBodyContent {
  * via the `definition` "editorsNote".
  */
 export interface EditorsNote {
-  editorsNoteContent?: {
+  content?: {
     root: {
       type: string;
       children: {
@@ -545,7 +545,7 @@ export interface SquiggleRuleBlock {
  * via the `definition` "volumeIntroduction".
  */
 export interface VolumeIntroduction {
-  volumeIntroductionContent?: {
+  content?: {
     root: {
       type: string;
       children: {
@@ -1382,7 +1382,7 @@ export interface ArticlesSelect<T extends boolean = true> {
  * via the `definition` "articleIntroduction_select".
  */
 export interface ArticleIntroductionSelect<T extends boolean = true> {
-  articleIntroductionContent?: T;
+  content?: T;
   id?: T;
   blockName?: T;
 }
@@ -1391,7 +1391,7 @@ export interface ArticleIntroductionSelect<T extends boolean = true> {
  * via the `definition` "articleBodyContent_select".
  */
 export interface ArticleBodyContentSelect<T extends boolean = true> {
-  articleBodyContent?: T;
+  content?: T;
   id?: T;
   blockName?: T;
 }
@@ -1400,7 +1400,7 @@ export interface ArticleBodyContentSelect<T extends boolean = true> {
  * via the `definition` "editorsNote_select".
  */
 export interface EditorsNoteSelect<T extends boolean = true> {
-  editorsNoteContent?: T;
+  content?: T;
   id?: T;
   blockName?: T;
 }
@@ -1456,7 +1456,7 @@ export interface VolumesSelect<T extends boolean = true> {
  * via the `definition` "volumeIntroduction_select".
  */
 export interface VolumeIntroductionSelect<T extends boolean = true> {
-  volumeIntroductionContent?: T;
+  content?: T;
   id?: T;
   blockName?: T;
 }
