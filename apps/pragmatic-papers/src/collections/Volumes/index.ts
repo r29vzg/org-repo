@@ -88,6 +88,28 @@ export const Volumes: CollectionConfig = {
               required: true,
             },
             {
+              name: 'introduction',
+              type: 'richText',
+              editor: lexicalEditor({
+                features: ({ rootFeatures }) => {
+                  return [
+                    ...rootFeatures,
+                    AlignFeature(),
+                    HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+                    BlocksFeature({ blocks: [Banner, Code, MediaBlock, SquiggleRule] }),
+                    FixedToolbarFeature(),
+                    InlineToolbarFeature(),
+                    HorizontalRuleFeature(),
+                    UnorderedListFeature(),
+                    OrderedListFeature(),
+                    IndentFeature(),
+                    BlockquoteFeature(),
+                  ]
+                },
+              }),
+              label: 'Introduction',
+            },
+            {
               name: 'editorsNote',
               type: 'richText',
               editor: lexicalEditor({
