@@ -16,8 +16,11 @@ export const ArticleIntroductionBlock: React.FC<Props> = ({
 }) => {
   if (!content) return null
   return (
-    <div className={cn('my-4 w-full', className)} key={index}>
-      <RichText enableGutter={false} className="font-serif" data={content} />
-    </div>
+    <RichText
+      enableGutter={false}
+      className={cn(className, 'font-serif')}
+      key={index}
+      data={content}
+    />
   )
 }

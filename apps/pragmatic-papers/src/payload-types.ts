@@ -264,6 +264,9 @@ export interface Volume {
     image?: (number | null) | Media;
     description?: string | null;
   };
+  layout: {
+    content: (VolumeIntroduction | EditorsNote | ArticleCardsGrid | SquiggleRuleBlock)[];
+  };
   publishedAt?: string | null;
   slug?: string | null;
   slugLock?: boolean | null;
@@ -536,6 +539,43 @@ export interface SquiggleRuleBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'squiggleRule';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volumeIntroduction".
+ */
+export interface VolumeIntroduction {
+  volumeIntroductionContent?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'volumeIntroduction';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ArticleCardsGrid".
+ */
+export interface ArticleCardsGrid {
+  /**
+   * Select articles to display in the grid. If left empty, will use the volume's articles.
+   */
+  articles?: (number | Article)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'articleCardsGrid';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1392,12 +1432,42 @@ export interface VolumesSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
+  layout?:
+    | T
+    | {
+        content?:
+          | T
+          | {
+              volumeIntroduction?: T | VolumeIntroductionSelect<T>;
+              editorsNote?: T | EditorsNoteSelect<T>;
+              articleCardsGrid?: T | ArticleCardsGridSelect<T>;
+              squiggleRule?: T | SquiggleRuleBlockSelect<T>;
+            };
+      };
   publishedAt?: T;
   slug?: T;
   slugLock?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volumeIntroduction_select".
+ */
+export interface VolumeIntroductionSelect<T extends boolean = true> {
+  volumeIntroductionContent?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ArticleCardsGrid_select".
+ */
+export interface ArticleCardsGridSelect<T extends boolean = true> {
+  articles?: T;
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -1,25 +1,25 @@
-import type { ArticleBodyContent as ArticleBodyContentBlockProps } from 'src/payload-types'
-
-import { cn } from '@/utilities/ui'
+import type { VolumeIntroduction as VolumeIntroductionBlockProps } from 'src/payload-types'
 import React from 'react'
 import RichText from '@/components/RichText'
+
+import { cn } from '@/utilities/ui'
 
 type Props = {
   className?: string
   index?: number
-} & ArticleBodyContentBlockProps
+} & VolumeIntroductionBlockProps
 
-export const ArticleBodyContentBlock: React.FC<Props> = ({
+export const VolumeIntroductionComponent: React.FC<Props> = ({
   className,
-  articleBodyContent: content,
+  volumeIntroductionContent: content,
   index,
 }) => {
   if (!content) return null
   return (
     <RichText
       enableGutter={false}
-      key={index}
       className={cn(className, 'font-serif')}
+      key={index}
       data={content}
     />
   )
